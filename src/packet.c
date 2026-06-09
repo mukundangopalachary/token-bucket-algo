@@ -1,5 +1,5 @@
-#include "../include/packet.h"
-#include "../include/timer.h"
+#include "packet.h"
+#include "timer.h"
 
 static uint32_t next_packet_id = 1;
 

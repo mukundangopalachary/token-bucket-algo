@@ -1,9 +1,29 @@
+CC = gcc
 
+CFLAGS = -Wall -Wextra -Wpedantic -std=c11 -Iinclude -g
 
-C = gcc
-CFLAG = -Wall -Wextra -Iinclude
+SRC = $(wildcard src/*.c)
 
-SRC_DIR=src 
-BUILD_DIR=build 
+OBJ = $(SRC:.c=.o)
 
-TARGET = MAIN
+TARGET = build/token_bucket_sim
+
+all: $(TARGET)
+
+$(TARGET): $(OBJ)
+	mkdir -p build
+	$(CC) $(OBJ) -o $(TARGET)
+
+src/%.o: src/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+run: all
+	./$(TARGET)
+
+clean:
+	rm -f src/*.o
+	rm -rf build
+
+rebuild: clean all
+
+.PHONY: all run clean rebuild
