@@ -384,8 +384,8 @@ make clean
 ---
 
 ## Example Output
-[token_bucket_image](./token_bucket_op.png)
----
+
+## ![token_bucket_image](./token_bucket_op.png)
 
 ## Future Improvements
 
